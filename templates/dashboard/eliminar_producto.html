@@ -1,0 +1,33 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block titulo %}Eliminar Producto{% endblock %}
+
+
+{% block contenido %}
+
+<div class="container" >
+
+    <div class="row mt-2">
+
+        <div class="col-md-6 offset-md-3">
+  
+            <div class="border bg-white p-3">
+          
+                <h3>¡Esta acción no se puede deshacer! </h3>
+                <hr>
+                <div class="alert alert-danger">
+                    <h4>¿Deseas eliminar este producto?</h4> 
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                <a class="btn btn-secondary" href="{% url 'productos' %}">Cancelar</a>
+                <input class="btn btn-danger" type="submit" value="Eliminar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock contenido %}

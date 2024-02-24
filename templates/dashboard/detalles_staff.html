@@ -1,0 +1,78 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block titulo %}Personal{% endblock %}
+
+
+
+{% block contenido %}
+
+  <!--Table-->
+  <div class="container">
+    <div class="row my-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <div class="row my-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-8 ">
+        <div class="card bg-white">
+            <div class="h4 card-header bg-success text-white h4">
+                Mi Perfil
+            </div>
+            <div class="row p-5">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        
+                        <thead>
+                            <span class="h4 text-dark"> Información</span class="h4">
+
+                            <hr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <th scope="row" class="text-dark">Nombre</th>
+                                <td>{{ user.perfil.nombre }}</td> 
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-dark">Apellido</th>
+                                <td>{{ user.perfil.apellido }}</td>
+                            </tr> 
+                            <tr>
+                                <th scope="row" class="text-dark">Usuario</th>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-dark">Email</th>
+                                <td>{{ user.email }}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-dark">Dirección</th>
+                                <td>{{ user.perfil.direccion }}</td>
+                               
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-dark">Teléfono</th>
+                                <td>{{ user.perfil.telefono }}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="col-md-4">
+                <img class="img-thumbnail  bg-white" src="{{ user.perfil.imagen.url }}" alt="Imagen">  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--End Table-->
+{% endblock contenido %}

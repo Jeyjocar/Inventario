@@ -1,0 +1,49 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block titulo %}Personal{% endblock %}
+
+{% include 'partials/navbar.html' %}
+
+
+{% block contenido %}
+
+  <!--Table-->
+  <div class="container">
+    <div class="row my-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-success">
+                    <tr class="text-white">
+                        <th scope="col">Acción</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %} 
+                    <tr>
+                        <th scope="row"><a class="btn btn-success btn-sm" href="{% url 'detalles_staff' usuario.id %}">Ver</a></th>
+
+                        <td>{{ usuario.perfil.nombre }}</td>
+                        <td>{{ usuario.perfil.apellido }}</td> 
+                        <td>{{ usuario.username }}</td>
+                        <td>{{ usuario.email }}</td> 
+                        <td>{{ usuario.perfil.telefono }}</td> 
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!--vista personal o usuarios Jeyfrey calero-->
+
+<!--End Table-->
+{% endblock contenido %}

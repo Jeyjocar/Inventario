@@ -1,0 +1,63 @@
+
+<style>
+    .my-card:hover{
+    background:rgb(115, 241, 134);
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+</style>
+<div class="row">
+    <div class="col-md-4 mt-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+               <strong>Información</strong> 
+            </div>
+            <div class="card-body text-dark">
+                <marquee behavior="" direction="">
+                    <h3 class="my-4"><strong>Nueva Información</strong></h3>
+                </marquee>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 mt-4">
+        <div class="card bg-white">
+            <div class="card-header bg-success text-white">
+                <strong>Estadisticas</strong>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'personal' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Perfil <i class="fas fa-users"></i></h4>
+                                    <h3>{{ contar_usuarios }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'productos' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Productos <i class="fas fa-box"></i></h4>
+                                    <h3>{{ contar_productos }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="text-decoration-none text-dark" href="{% url 'pedido' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <h4>Pedidos <i class="fas fa-shipping-fast"></i></h4>
+                                    <h3>{{ contar_pedidos }}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+{% extends 'partials/base.html' %}
+{% block titulo %}Inventario Jeyfrey{% endblock %}
+
+
+
+{% block contenido %}
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
+{% include 'partials/navbar.html' %}
+
+<!-- Creacion de graficos -->
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-6">
+            <div class="bg-white">
+                <canvas id="fig1" width="400" height="300"></canvas>
+                <script>
+                    var ctx = document.getElementById('fig1').getContext('2d');
+                    var grafica1 = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: [{% for pedido in pedidos %} '{{pedido.producto.nombre}}', {% endfor %}],
+                            datasets: [{
+                                label: 'Pedidos',  
+                                data: [{% for pedido in pedidos %} {{pedido.cantidad_pedida}}, {% endfor %}],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)', 
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(215, 159, 64, 1)',
+                                    'rgba(234, 99, 132, 1)',
+                                    'rgba(154, 162, 235, 1)',
+                                    'rgba(55, 206, 86, 1)', 
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 130, 205, 1)',
+                                    'rgba(195, 159, 64, 1)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="bg-white">
+                <canvas id="figura2" width="400" height="300"></canvas>
+                <script>
+                    var ctx = document.getElementById('figura2').getContext('2d');
+                    var grafica2 = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: [{% for producto in productos %} '{{producto.nombre}}', {% endfor %}],
+                            datasets: [{
+                                label: 'Productos',
+                                data: [{% for producto in productos %} '{{producto.cantidad}}', {% endfor %}],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)',
+                                    'rgba(234, 99, 132, 1)',
+                                    'rgba(154, 162, 235, 1)',
+                                    'rgba(55, 206, 86, 1)', 
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 130, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!--Finalizando Graficos-->
+{% else %}
+{% include 'dashboard/staff_index.html' %}
+{% endif %}
+{% endblock contenido %}

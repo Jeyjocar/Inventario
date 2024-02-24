@@ -1,0 +1,50 @@
+{% extends 'partials/base.html' %}
+{% block titulo %} Pedidos{% endblock %}
+{% load static %}
+
+{% block contenido %}
+
+<!--Table-->
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-success">
+                    <tr class="text-white">
+                        <th scope="col">Producto</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Ordenado por</th>
+                        <th scope="col">Fecha Pedido</th>
+                        <th scope="col">Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos %}
+                     
+                    <tr>
+                        <td>{{ pedido.producto }}</td>
+                        <td>{{ pedido.producto.categoria }}</td>
+                        <td>{{ pedido.cantidad_pedida }}</td>
+                        <td>{{ pedido.usuario.username }}</td>
+                        <td>{{ pedido.fecha }}</td>
+                        <td>{{ pedido.precio }}</td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--End Table-->
+
+{% endblock %}

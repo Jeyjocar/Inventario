@@ -1,0 +1,85 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!--FontAwesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+        integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <!--Chartjs CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+    <!--Custome CSS-->
+    <link rel="stylesheet">
+        <!--Logo pestaña página pestaña-->
+    <link href="stylesheet" rel="shortcut icon">
+    <title>{% block titulo %}Inventario Jeyfrey Calero{% endblock titulo %}</title>
+</head>
+
+
+    {% include 'partials/menu.html' %}
+
+    <!--{% include 'partials/navbar.html' %}-->
+
+
+    
+
+    {% block contenido %}
+
+    {% endblock contenido %}
+a
+
+
+    <footer class="bg-dark text-center text-lg-start text-light" id="footer">
+        <!-- Footer Jeyfrey Calero -->
+        <div class="text-center p-3 mt-0" style="background-color: rgba(34, 229, 9, 0.3);">
+        Copyright &copy; {% now "Y" %} <span>Derechos Reservados</span> | Realizado 
+            <i style="font-size:15px;"></i> By 
+            <a href="#" target="_blank" style="color:rgb(6, 0, 128); text-decoration:none;"><span>Inventario Jeyfrey</span></a>
+        </div>
+    </footer> 
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    
+    <script src="https://kit.fontawesome.com/584e0fe159.js" crossorigin="anonymous"></script>
+<!-- Jeyfrey Calero-->
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
+                    var Mensaje = '{{message}}'; 
+                    swal('Felicitaciones...!', Mensaje, 'success');
+                </script>
+            {% endif %}
+        {% endfor %}
+       <!--JQuery Confirm -->
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+<!--Font Awesome-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+{% extends 'partials/base.html' %}
+{% block titulo %}Productos{% endblock %}
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+            {% for message in messages %}
+                {% if message %}
+                <div class="alert alert-{{message.tags}}">{{message}}</div>
+                {% endif %}
+            {% endfor %}
+            <div class="border bg-white p-3">
+                <h4>Agregar productos</h4> 
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input class="btn btn-success btn-block" type="submit" value="Agregar producto">
+                    
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-success">
+                    <tr class="text-white">
+                        <th scope="col">Ítem</th>
+                        <th scope="col">Nombre Producto</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Actividad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %} <!--productos es la clave del diccionario de las views-->
+                    <tr>
+                        <th scope="row">{{ producto.id }}</th>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.categoria }}</td>
+                        <td>{{ producto.cantidad }}</td>
+                        <td>U$&nbsp;{{ producto.precio }}</td> 
+                        <td>
+                            <a class="btn btn-success btn-sm" href="{% url 'actualizar_producto' producto.id %}">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!--End Table incluir paginación Jeyfrey Calero-->
+{% endblock contenido %}

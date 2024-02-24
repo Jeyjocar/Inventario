@@ -1,0 +1,38 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Editar perfil
+{% endblock titulo %}
+<!doctype html>
+<html lang="en">
+{% load crispy_forms_tags %}
+{% include 'partials/menu.html' %}
+
+{% block contenido %}
+<div class="row my-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <div class="card bg-white">
+            <div class="h4 card-header bg-success text-white h4">
+                Mi Perfil
+            </div>
+            <div class="row p-4">
+                <div class="col-md-8">
+                    <span class="h4 text-dark">Datos personales</span class="h4">
+                    <hr>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ usuario|crispy }}
+                        {{ perfil|crispy }}
+                        <input type="submit" class="btn btn-success" value="Actualizar"> 
+                    </form>
+
+                </div> 
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock contenido %}

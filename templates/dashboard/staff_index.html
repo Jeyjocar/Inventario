@@ -1,0 +1,55 @@
+
+{% load crispy_forms_tags %}
+<div class="container">
+    
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card bg-white">
+                    <div class="card-header">
+                        
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                           {% csrf_token %}
+                            {{ form|crispy }}
+                            <input class="btn btn-success btn-block" type="submit" value="Agregar pedido">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card bg-white">
+                    <div class="card-header text-dark">
+                        Mis Pedidos
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="bg-success text-white">
+                                <tr>
+                                    <th scope="col">Productos</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pedido in pedidos %}
+                                    {% if pedido.usuario == user %}
+                                <tr>
+                                    <td>{{ pedido.producto.nombre }}</td>
+                                    <td>{{ pedido.producto.categoria }}</td>
+                                    <td>{{ pedido.producto.cantidad }}</td>
+                                    <td>U$&nbsp;{{ pedido.precio }}</td>
+                                </tr>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+

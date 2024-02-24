@@ -1,0 +1,26 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block titulo %}Actualizar Producto{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+<div class="container" >
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="border bg-white p-3">
+                <h3>Editar Producto</h3>
+                <hr>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form| crispy }}
+                <a class="btn btn-secondary" href="{% url 'productos' %}">Cancelar</a>
+                <input class="btn btn-success" type="submit" value="Editar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido %}
